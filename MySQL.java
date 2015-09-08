@@ -26,15 +26,15 @@ public class MySQL {
                  Class.forName("com.mysql.jdbc.Driver").newInstance();
                  connMySQL = DriverManager.getConnection(urlMySQL, userMySQL, passMySQL);
                  try{
-                   Combo.setLog("Conectado!");
+                   System.out.println("Conectado!");
                  }
                  catch (Exception ex){
-                     Combo.setLog("Erro na conexão");
+                     System.out.println("Erro na conexão");
                  }
         }
         catch (Exception ex) 
          {
-              Combo.setLog("Sem conexão!");
+              System.out.println("Sem conexão!");
          }   
         
         
@@ -50,7 +50,7 @@ public class MySQL {
             resultPrepared = connMySQL.prepareStatement(sql);
             return resultPrepared;
         }catch(SQLException e){
-            Combo.setLog("Erro no SQL:"+e);
+            System.out.println("Erro no SQL:"+e);
             return null;
         }        
     }
@@ -80,13 +80,13 @@ public class MySQL {
           }
           // Se não
           catch(Exception ex){
-             Combo.setLog("Erro no SQL:"+ex);  
+             System.out.println("Erro no SQL:"+ex);  
           }
        
        }
        // Se não foi bem executado o query
        catch(Exception ex){
-         Combo.setLog("Erro no SQL:"+ex);  
+         System.out.println("Erro no SQL:"+ex);  
        }
        
        return null;
@@ -101,7 +101,7 @@ public class MySQL {
         try{
             return rsMySQL.getMetaData().getColumnCount();
         }catch(SQLException e){
-            Combo.setLog("Erro no pedido de SQL:"+e);
+            System.out.println("Erro no pedido de SQL:"+e);
         }
         return rows;
     }
@@ -114,7 +114,7 @@ public class MySQL {
         try{
             return rsMySQL.next();
         }catch(SQLException e){
-            Combo.setLog("Erro ao retornar valores:"+e);
+            System.out.println("Erro ao retornar valores:"+e);
             return false;
         }
     }
